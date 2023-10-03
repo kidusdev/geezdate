@@ -2,6 +2,7 @@
   "name": "geezdate",
   "version": "1.0.0",
   "description": "",
+  "types": "lib",
   "main": "lib/index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
