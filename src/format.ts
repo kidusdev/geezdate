@@ -27,7 +27,11 @@ const months = [
  * * Y - year        => 0000
  * * E - calender    => ዓ.ም
  */
-export const format = function (inputDate: GeezDate, pattern: string = "d-m-y e") {
+
+export const format = function (
+  inputDate: { year: number; month: number; date: number },
+  pattern: string = "d-m-y e"
+) {
   const { date, month, year } = inputDate;
 
   if (!pattern) throw new Error("pattern is empty!");

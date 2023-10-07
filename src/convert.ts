@@ -4,7 +4,7 @@ const startDayOfEthiopian = function (year: number) {
   return (year - 1) % 4 === 3 ? newYearDay + 1 : newYearDay;
 };
 
-export const toEC = function (inputDate: Date) {
+export const toEC = function (inputDate: Date): { year: number; month: number; date: number } {
   const gregorianMonths = [0.0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const ethiopianMonths = [0.0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5, 30, 30, 30, 30];
   const [year, month, date] = [inputDate.getFullYear(), inputDate.getMonth() + 1, inputDate.getDate()];
