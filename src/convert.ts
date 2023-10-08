@@ -1,10 +1,12 @@
+import GeezDate from ".";
+
 const startDayOfEthiopian = function (year: number) {
   const newYearDay = Math.floor(year / 100) - Math.floor(year / 400) - 4;
   // if the prev ethiopian year is a leap year, new-year occrus on 12th
   return (year - 1) % 4 === 3 ? newYearDay + 1 : newYearDay;
 };
 
-export const toEC = function (inputDate: Date): { year: number; month: number; date: number } {
+export const toEC = function (inputDate: Date): GeezDate {
   const gregorianMonths = [0.0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const ethiopianMonths = [0.0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5, 30, 30, 30, 30];
   const [year, month, date] = [inputDate.getFullYear(), inputDate.getMonth() + 1, inputDate.getDate()];
@@ -62,12 +64,14 @@ export const toEC = function (inputDate: Date): { year: number; month: number; d
   // Ethiopian months ordered according to Gregorian
   const order = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4];
   const ethiopianMonth = order[m];
-  return { year: ethiopianYear, month: ethiopianMonth, date: ethiopianDate };
+  return new GeezDate({ year: ethiopianYear, month: ethiopianMonth, date: ethiopianDate });
 };
 
 // ==============================================================================================
 
-export const toGC = function ({ year, month, date }: { year: number; month: number; date: number }) {
+export const toGC = function (inputDate: GeezDate) {
+  const { year, month, date } = inputDate.date;
+
   // Ethiopian new year in Gregorian calendar
   const newYearDay = startDayOfEthiopian(year);
 

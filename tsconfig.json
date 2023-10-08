@@ -106,5 +106,12 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/is.ts",
+    "src/convert.ts",
+    "src/format.ts",
+    "src/test/index.ts",
+    "src/test/navigate.ts"
+  ]
 }
